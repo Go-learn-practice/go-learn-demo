@@ -1,10 +1,14 @@
 package _case
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/gorm"
+	"log"
+)
 
 func init() {
 	err := DB.Migrator().AutoMigrate(&Teacher{})
 	if err != nil {
+		log.Printf("AutoMigrate failed: %v", err)
 		return
 	}
 }
