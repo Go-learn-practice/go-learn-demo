@@ -25,6 +25,7 @@ func Nested() {
 		"address": {"city": "New York", "zip_code": "10001"}
 	}`
 	var employee Employee
+	// json 字符串转 结构体
 	err := json.Unmarshal([]byte(jsonData), &employee)
 	if err != nil {
 		fmt.Println(err)

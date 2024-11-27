@@ -10,9 +10,9 @@ type HS struct {
 type HSSignMethod string
 
 const (
-	HS256 = "HS256"
-	HS384 = "HS384"
-	HS512 = "HS512"
+	HS256 HSSignMethod = "HS256"
+	HS384 HSSignMethod = "HS384"
+	HS512 HSSignMethod = "HS512"
 )
 
 func (hs *HS) getHSSignMethod(name HSSignMethod) *jwt.SigningMethodHMAC {

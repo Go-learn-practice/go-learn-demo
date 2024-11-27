@@ -10,5 +10,5 @@ func main() {
 	r := gin.New()
 	r.Use(gin.Logger(), gin.Recovery())
 	routers.InitRouters(r)
-	r.Run(":8080")
+	r.Run(":8889")
 }

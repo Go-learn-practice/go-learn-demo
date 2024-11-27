@@ -8,6 +8,7 @@ import (
 )
 
 /*
+JSON Web Token: header + payload + signature
 1. 选择一种加密方式
 2. 构造payload部分
 3. 执行加密过程
