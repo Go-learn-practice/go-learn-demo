@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"github.com/golang-jwt/jwt/v5"
 	"jwt/jwtV1"
+	"jwt/secret"
+	"os"
 	"time"
 )
 
@@ -38,12 +40,29 @@ func main() {
 	var sign string
 	var err error
 
-	hs := jwtV1.HS{
-		Key: "your-256-bit-secret",
-	}
-	sign, err = hs.Encode(myClaims)
-	fmt.Println(sign, err)
+	/*
+		hs := jwtV1.HS{
+				Key: "your-256-bit-secret",
+			}
+			sign, err = hs.Encode(myClaims)
+			fmt.Println(sign, err)
 
-	err = hs.Decode(sign, &outClaims)
+			err = hs.Decode(sign, &outClaims)
+			fmt.Println(err, outClaims)
+	*/
+
+	edGen := secret.EdGenerator{}
+	edKeys, err := edGen.Generate()
+	fmt.Println(edKeys, err)
+
+	privateKey, _ := os.ReadFile(edKeys.PrivateKeyFile)
+	publicKey, _ := os.ReadFile(edKeys.PublicKeyFile)
+	ed := jwtV1.ED{
+		PrivateKey: string(privateKey),
+		PublicKey:  string(publicKey),
+	}
+	sign, err = ed.Encode(myClaims)
+	fmt.Println(sign, err)
+	err = ed.Decode(sign, &outClaims)
 	fmt.Println(err, outClaims)
 }
