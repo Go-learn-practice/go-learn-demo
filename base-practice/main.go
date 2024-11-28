@@ -1,6 +1,9 @@
 package main
 
-import _ctx "base-practice/context"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	//_chan.Run()
@@ -9,5 +12,16 @@ func main() {
 	//_json.RunJson2Struct()
 	//_json.Nested()
 
-	_ctx.Run()
+	//_ctx.Run()
+
+	ptr()
+}
+
+type A struct {
+	*os.File
+}
+
+func ptr() {
+	a := &A{os.Stderr}
+	fmt.Println(a)
 }

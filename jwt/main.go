@@ -40,6 +40,7 @@ func main() {
 	var sign string
 	var err error
 
+	// 对称签名
 	/*
 		hs := jwtV1.HS{
 				Key: "your-256-bit-secret",
@@ -51,6 +52,7 @@ func main() {
 			fmt.Println(err, outClaims)
 	*/
 
+	// 非对称签名
 	edGen := secret.EdGenerator{}
 	edKeys, err := edGen.Generate()
 	fmt.Println(edKeys, err)
