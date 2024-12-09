@@ -1,6 +1,8 @@
 package cache
 
 import (
+	"encoding/json"
+	"fmt"
 	"log"
 	"regexp"
 	"strconv"
@@ -54,5 +56,9 @@ func ParseSize(size string) (int64, string) {
 }
 
 func GetValueSize(val interface{}) int64 {
-	return 0
+	bytes, _ := json.Marshal(val)
+	size := int64(len(bytes))
+
+	fmt.Println(size)
+	return size
 }
