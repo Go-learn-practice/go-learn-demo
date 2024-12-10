@@ -5,23 +5,24 @@ import (
 	"time"
 )
 
-type cacheServer struct {
+type CacheServer struct {
 	memCache cache.Cache
 }
 
-func NewMemCache() *cacheServer {
-	return &cacheServer{
+func NewMemCache() *CacheServer {
+	//memCache的值cache.NewMemCache()必须实现了cache.Cache的所有接口
+	return &CacheServer{
 		memCache: cache.NewMemCache(),
 	}
 }
 
 // size: 1KB 100KB 1MB 2MB 1GB
-func (cs *cacheServer) SetMaxMemory(size string) bool {
+func (cs *CacheServer) SetMaxMemory(size string) bool {
 	return cs.memCache.SetMaxMemory(size)
 }
 
 // 将value写入缓存
-func (cs *cacheServer) Set(key string, val interface{}, expire ...time.Duration) bool {
+func (cs *CacheServer) Set(key string, val interface{}, expire ...time.Duration) bool {
 	expireTs := time.Second * 0
 	if len(expire) > 0 {
 		expireTs = expire[0]
@@ -30,26 +31,26 @@ func (cs *cacheServer) Set(key string, val interface{}, expire ...time.Duration)
 }
 
 // 根据key值获取value
-func (cs *cacheServer) Get(key string) (interface{}, bool) {
+func (cs *CacheServer) Get(key string) (interface{}, bool) {
 	return cs.memCache.Get(key)
 }
 
 // 删除key值
-func (cs *cacheServer) Del(key string) bool {
+func (cs *CacheServer) Del(key string) bool {
 	return cs.memCache.Del(key)
 }
 
 // 判断key是否存在
-func (cs *cacheServer) Exists(key string) bool {
+func (cs *CacheServer) Exists(key string) bool {
 	return cs.memCache.Exists(key)
 }
 
 // 清空所有key
-func (cs *cacheServer) Flush() bool {
+func (cs *CacheServer) Flush() bool {
 	return cs.memCache.Flush()
 }
 
 // 获取缓存中所有key的数量
-func (cs *cacheServer) Keys() int64 {
+func (cs *CacheServer) Keys() int64 {
 	return cs.memCache.Keys()
 }

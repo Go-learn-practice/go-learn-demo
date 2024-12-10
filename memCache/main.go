@@ -17,7 +17,8 @@ func main() {
 	cache.Set("data", map[string]interface{}{"a": 1})
 
 	cache.Get("int")
-	cache.Del("int")
-	cache.Flush()
-	cache.Keys()
+	cache.Get("bool")
+	//cache.Del("int")
+	//cache.Flush()
+	//cache.Keys()
 }

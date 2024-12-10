@@ -54,7 +54,7 @@ func (mc *memCache) SetMaxMemory(size string) bool {
 func (mc *memCache) Set(key string, val interface{}, expire time.Duration) bool {
 	mc.locker.Lock()
 	defer mc.locker.Unlock()
-	fmt.Println("called set")
+	//fmt.Println("called set")
 	v := &memCacheValue{
 		val:        val,
 		expireTime: time.Now().Add(expire),
@@ -91,13 +91,15 @@ func (mc *memCache) add(key string, val *memCacheValue) {
 
 // 根据Key值获取value
 func (mc *memCache) Get(key string) (interface{}, bool) {
-	mc.locker.RLock()
-	defer mc.locker.RUnlock()
+	mc.locker.RLock() //读锁
 	mcv, ok := mc.get(key)
+	mc.locker.RUnlock() //释放读锁
 	if ok {
 		//判断是否过期
 		if mcv.expire != 0 && mcv.expireTime.Before(time.Now()) {
+			mc.locker.Lock() // 写锁
 			mc.del(key)
+			mc.locker.Unlock() // 释放写锁
 			return nil, false
 		}
 		return mcv.val, ok

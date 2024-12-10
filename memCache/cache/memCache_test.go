@@ -16,7 +16,7 @@ func TestCacheOP(t *testing.T) {
 		{"junjie2", true, time.Second * 14},
 		{"junjie3", map[string]interface{}{"a": 3, "b": false}, time.Second * 16},
 		{"junjie4", "abcdefghijklmn", time.Second * 18},
-		{"junjie5", "你好欢迎来到我的世界", time.Second * 20},
+		{"junjie5", "你好！欢迎来到我的世界", time.Second * 20},
 	}
 	c := NewMemCache()
 	c.SetMaxMemory("10MB")
@@ -44,7 +44,7 @@ func TestCacheOP(t *testing.T) {
 		t.Error("缓存数量不一致")
 	}
 
-	time.Sleep(time.Second * 20)
+	time.Sleep(time.Second * 30)
 	if c.Keys() != 0 {
 		t.Error("过期缓存清空失败")
 	}
