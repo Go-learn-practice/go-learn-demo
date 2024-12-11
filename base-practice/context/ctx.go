@@ -30,5 +30,5 @@ func Run() {
 	cancel() // 调用 cancel 函数取消所有任务
 
 	// 等待所有任务完成
-	time.Sleep(3 * time.Second) // 让所有 goroutine 有时间输出结果
+	time.Sleep(1 * time.Second) // 让所有 goroutine 有时间输出结果
 }

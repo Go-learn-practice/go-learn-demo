@@ -20,6 +20,7 @@ func producer(ch chan int, wg *sync.WaitGroup) {
 	defer wg.Done()
 
 	for i := 0; i < 5; i++ {
+		//写
 		ch <- i
 		fmt.Println("Produced:", i)
 	}
@@ -29,13 +30,14 @@ func producer(ch chan int, wg *sync.WaitGroup) {
 func consumer(ch chan int, wg *sync.WaitGroup) {
 	defer wg.Done()
 
+	//读
 	for val := range ch { // 消费者不断从通道中接收数据
 		fmt.Println("Consumed:", val)
 	}
 }
 
 func Run() {
-	ch := make(chan int)
+	ch := make(chan int, 5)
 	wg := sync.WaitGroup{}
 
 	wg.Add(2)
