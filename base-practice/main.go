@@ -1,10 +1,10 @@
 package main
 
-import _ctx "base-practice/context"
+import _chan "base-practice/chan"
 
 func main() {
 	//_chan.Run()
-	//_chan.RunCase()
+	_chan.RunCase()
 	//_chan.Run2()
 	//_chan.Run3()
 
@@ -12,5 +12,5 @@ func main() {
 	//_json.RunJson2Struct()
 	//_json.Nested()
 
-	_ctx.Run()
+	//_ctx.Run()
 }
