@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "chat/chat";
+
+package chat;
+
+service ChatService {
+  // 定义一个双向流式的 RPC 方法
+  rpc ChatStream(stream ChatMessage) returns (stream ChatMessage);
+}
+
+message ChatMessage {
+  string user = 1;      // 用户名
+  string message = 2;   // 消息内容
+  int64 timestamp = 3;  // 时间戳
+}
+
+// cd grpc
+// protoc --go_out=. --go-grpc_out=. chat/chat/chat.proto

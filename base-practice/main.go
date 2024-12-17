@@ -1,10 +1,10 @@
 package main
 
-import _chan "base-practice/chan"
+import log "base-practice/log"
 
 func main() {
 	//_chan.Run()
-	_chan.RunCase()
+	//_chan.RunCase()
 	//_chan.Run2()
 	//_chan.Run3()
 
@@ -13,4 +13,10 @@ func main() {
 	//_json.Nested()
 
 	//_ctx.Run()
+
+	//flag.RunFlags()
+
+	//log.RunNormal()
+	//log.RunError()
+	log.RunCustom()
 }
