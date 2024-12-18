@@ -1,6 +1,8 @@
 package main
 
-import log "base-practice/log"
+import (
+	"base-practice/bufBytes"
+)
 
 func main() {
 	//_chan.Run()
@@ -18,5 +20,14 @@ func main() {
 
 	//log.RunNormal()
 	//log.RunError()
-	log.RunCustom()
+	//log.RunCustom()
+
+	//_sync.RunOnce()
+	//_sync.RunAtomic()
+	//_sync.RunChan()
+
+	//bufBytes.Writer()
+	//bufBytes.Reader()
+	//bufBytes.Reset()
+	bufBytes.Print()
 }

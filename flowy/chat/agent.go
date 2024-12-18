@@ -58,6 +58,7 @@ func ChatWithAgent(chatRequest ChatRequest) (respMessage ChatResponse) {
 
 			for {
 				// 读取数据 通道无缓存 需要接收双方同时握手
+				// 读取数据 通道有缓存 直接读取通道中的数据
 				var dmsg, err = chatChannel.Read()
 
 				if err == nil {

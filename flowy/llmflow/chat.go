@@ -3,6 +3,7 @@ package llmflow
 import (
 	"fmt"
 	"io"
+	"log"
 	"sync"
 )
 
@@ -64,7 +65,7 @@ func NewStreamChatChannel() (ChatChannel, DeltaMessageWriter) {
 
 	// messageStream实现了DeltaMessageWriter接口
 	var messageStream = &DeltaMessageStream{
-		messageChan: make(chan DeltaMessage),
+		messageChan: make(chan DeltaMessage, 65535),
 		// 加锁处理并发
 		locker: &sync.Mutex{},
 	}
@@ -121,8 +122,7 @@ func (m *DeltaMessageStream) Write(msg DeltaMessage) error {
 
 		return nil
 	} else {
-
-		//	println("closed,buf write:" + msg.Message)
+		fmt.Printf("closed,buf write:%s\n", msg.Message)
 		return io.EOF
 	}
 }
@@ -147,6 +147,12 @@ func (m *DeltaMessageStream) CloseWithError(err error) {
 
 	if m.messageChan != nil && !m.closed {
 		m.err = err
+		// 流结束
+		if err == io.EOF {
+			log.SetPrefix("[oai-stream-end]")
+			log.Println("流式输出结束")
+		}
+		// 关闭通道
 		close(m.messageChan)
 		m.closed = true
 		//	m.messageChan = nil

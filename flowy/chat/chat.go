@@ -41,8 +41,8 @@ type ChatResponse struct {
 }
 
 func ChatAsyncWithAgent(request ChatRequest) <-chan ChatResponse {
-	// 创建通道 缓存为1
-	var result = make(chan ChatResponse, 1)
+	// 创建通道 缓存为 2 ^ 16 - 1
+	var result = make(chan ChatResponse, 65535)
 
 	var closeChan = func() {
 		close(result)
