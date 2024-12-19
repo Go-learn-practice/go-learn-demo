@@ -1,7 +1,8 @@
 package main
 
 import (
-	"base-practice/bufBytes"
+	"base-practice/flowy"
+	"log"
 )
 
 func main() {
@@ -29,5 +30,11 @@ func main() {
 	//bufBytes.Writer()
 	//bufBytes.Reader()
 	//bufBytes.Reset()
-	bufBytes.Print()
+	//bufBytes.Print()
+
+	p, err := flowy.GetUserDataDir()
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println(p)
 }
