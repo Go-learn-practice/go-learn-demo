@@ -1,14 +1,13 @@
 package main
 
-import (
-	"base-practice/bufBytes"
-)
+import "base-practice/bufBytes"
 
 func main() {
 	//_chan.Run()
 	//_chan.RunCase()
 	//_chan.Run2()
 	//_chan.Run3()
+	//_chan.RunCase4Chan()
 
 	//_json.RunStruct2Json()
 	//_json.RunJson2Struct()
