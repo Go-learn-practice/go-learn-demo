@@ -1,9 +1,6 @@
 package main
 
-import (
-	"base-practice/flowy"
-	"log"
-)
+import _semaphore "base-practice/semaphore"
 
 func main() {
 	//_chan.Run()
@@ -32,9 +29,11 @@ func main() {
 	//bufBytes.Reset()
 	//bufBytes.Print()
 
-	p, err := flowy.GetUserDataDir()
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Println(p)
+	//p, err := flowy.GetUserDataDir()
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//log.Println(p)
+
+	_semaphore.RunSem()
 }
