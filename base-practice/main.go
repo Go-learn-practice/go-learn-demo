@@ -7,7 +7,6 @@ func main() {
 	//_chan.RunCase()
 	//_chan.Run2()
 	//_chan.Run3()
-	//_chan.RunCase4Chan()
 
 	//_json.RunStruct2Json()
 	//_json.RunJson2Struct()
@@ -29,4 +28,12 @@ func main() {
 	//bufBytes.Reader()
 	//bufBytes.Reset()
 	bufBytes.Print()
+
+	//p, err := flowy.GetUserDataDir()
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//log.Println(p)
+
+	//_semaphore.RunSem()
 }
