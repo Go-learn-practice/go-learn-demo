@@ -1,6 +1,6 @@
 package main
 
-import "base-practice/bufBytes"
+import flag "base-practice/flag"
 
 func main() {
 	//_chan.Run()
@@ -15,6 +15,7 @@ func main() {
 	//_ctx.Run()
 
 	//flag.RunFlags()
+	flag.RunOsArgs()
 
 	//log.RunNormal()
 	//log.RunError()
@@ -27,7 +28,7 @@ func main() {
 	//bufBytes.Writer()
 	//bufBytes.Reader()
 	//bufBytes.Reset()
-	bufBytes.Print()
+	//bufBytes.Print()
 
 	//p, err := flowy.GetUserDataDir()
 	//if err != nil {

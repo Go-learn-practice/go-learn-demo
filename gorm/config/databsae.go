@@ -11,6 +11,7 @@ import (
 var DB *gorm.DB
 var dsn = "root:123456@tcp(127.0.0.1)/mydb?charset=utf8mb4&parseTime=True&loc=Local"
 
+// InitDB 初始化数据库连接
 func InitDB() {
 	var err error
 	DB, err = gorm.Open(mysql.New(mysql.Config{
