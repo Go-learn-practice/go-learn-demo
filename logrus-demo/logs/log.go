@@ -7,6 +7,7 @@ type Log struct {
 	LogWriter
 }
 
+// Flush 刷新日志
 func (l *Log) Flush() {
 	l.LogWriter.Flush()
 }
